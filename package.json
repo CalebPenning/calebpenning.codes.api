@@ -8,18 +8,26 @@
     "dev": "tsx --watch ./src/index.ts",
     "format": "prettier --write ./src/**/*.ts",
     "build": "tsc",
-    "prod": "node ./dist/index.js"
+    "prod": "yarn build && yarn pm2:start",
+    "pm2:start": "pm2 start ./dist/index.js --name calebpenning-api --instances max --env NODE_ENV=production,PORT=3000",
+    "pm2:stop": "pm2 stop calebpenning-api",
+    "pm2:restart": "pm2 restart calebpenning-api",
+    "pm2:delete": "pm2 delete calebpenning-api",
+    "pm2:logs": "pm2 logs calebpenning-api"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.2.0",
     "eslint": "^9.32.0",
+    "pm2": "^6.0.8",
     "prettier": "^3.6.2",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2"
