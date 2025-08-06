@@ -1,5 +1,5 @@
 import { Router } from "express"
-import config from "../config"
+import config from "../config.js"
 
 const router = Router()
 const { WEATHER_API_BASE_URL, API_KEY, CURRENT_ROUTE, FORECAST_ROUTE } = config
